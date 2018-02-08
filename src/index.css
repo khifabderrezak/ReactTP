@@ -1,0 +1,118 @@
+* {
+  /* pour maîtriser width et flex-basis */
+  box-sizing: border-box;
+}
+
+html {
+  display: flex;
+
+  /* correction bug IE de min-height non appliqué à body */
+  flex-direction: column;
+}
+
+body {
+  /* crée un contexte flex pour ses enfants */
+  display: flex;
+
+  /* affichage vertical */
+  flex-direction: column;
+
+  /* toute la hauteur du viewport */
+  min-height: 100vh;
+
+  padding: 1em;
+}
+
+.wrapper {
+  /* occupe la hauteur restante */
+  flex: 1 1 auto;
+
+  /* crée un contexte flex pour ses enfants */
+  display: flex;
+}
+
+nav,
+aside {
+  width: 17em;
+}
+
+article {
+  /* occupe la largeur restante */
+  flex: 1;
+}
+
+nav {
+  /* nav s'affiche en premier */
+  order: -1;
+}
+
+/* Responsive (fenêtres de moins de 640px) */
+@media (max-width: 640px) {
+  .wrapper {
+    /* affichage vertical */
+    flex-direction: column;
+  }
+
+  nav,
+  aside {
+    /* pour écraser la valeur 10em */
+    width: auto;
+  }
+
+  nav,
+  aside,
+  article {
+    /* pour écraser la valeur 0, due au flex: 1 */
+    flex-basis: auto;
+  }
+
+  nav {
+    /* nav reprend sa place */
+    order: 0;
+  }
+}
+
+/* Decoration */
+body {
+  margin: 0;
+
+  font-family: arial, sans-serif;
+}
+
+header,
+nav,
+aside,
+article,
+footer {
+  margin: .4em;
+  padding: 1em;
+  border-radius: 6px;
+}
+
+button{
+  height: 50px;
+  width: 200px;
+  background-color: #d4d4d4;
+  border-radius: 7px;
+}
+#list_capteur {
+  color: #2e2e2e;
+  list-style-type: none;
+  margin: 0 0 3em;
+  padding: 0;
+}
+#list_capteur li {
+  padding: 5px 20px;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+td{
+  padding: 5px;
+  text-align: center;
+  border: 1px solid black;
+}
+tr:nth-child(odd) {
+  background: #d4d4d4;
+}
